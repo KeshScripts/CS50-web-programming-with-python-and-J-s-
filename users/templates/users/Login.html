@@ -1,0 +1,58 @@
+{% extends "users/layout.html" %}
+{% block body%}
+
+<div class="container p-4">
+   {% if message %}
+   <div class="alert alert-danger fixed-top">
+      <strong>Alert ! {{message}}</strong>
+      <button class="close" data-dissmiss="alert"></button>
+   </div>
+   {% endif %}
+   <form method="post" action="{% url "login" %}" class="form">
+      {% csrf_token  %}
+
+      <div class="p-4">
+         <h4 class="display-4 text-center">Welcome Back!</h4>
+      </div>
+      <div class="py-4 form-group">
+         <label for="email" class="form-label col-form-auto">
+            <strong class="text-centertext-secondary ">Username</strong>
+         </label>
+         <div class="col-form-auto">
+            <input type="text" class="shadow-none border border-success
+                border-top-0 border-left-0
+               border-right-0
+               form-control" placeholder="examplename@hotmail.com" name="username" id="username" />
+         </div>
+      <div class="py-4 form-group ">
+         <label for="username" class="form-label col-form-auto">
+            <strong class="text-center :== ">Password</strong>
+         </label>
+         <div class="col-form-auto">
+            <div class=" input-group">
+            <input type="Password" class="shadow-none border border-success
+               border-top-0 border-left-0
+               border-right-0
+               form-control" placeholder="Enter Password" name="password" id="password" />
+           <div class=" input-group-append">
+              <i class="icon input-group-text 
+                 border-top-0
+                 border-left-0
+                 border-right-0
+               bg-white border border-success fa fa-eye "></i>
+               
+           </div>
+           </div>
+           
+         </div>
+            <div class="pt-4 text-sm text-right">Forget Password ?</div>                 
+      <input class="mt-4 mb-3 p-3 rounded-0 btn-block btn btn-lg btn-success" value="Login" type="submit"></input>
+      
+   </form>
+   </b>
+   </b>
+    <strong class="text-secondary">unable to Log In  <a class="text-success">CREATE AN ACCOUNT</a>
+    </strong>
+</div>>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "./layout.html" %}
+{% block body %}
+
+<body>
+   <div class=" m-auto ">
+      <div width="30rem" class="card   m-auto">
+         <div class="card-header bg-info  p-3">
+            <h1 class="text-center">Flight {{flight.id}}</h1>
+         </div>
+         <div class="mt-3  card-body">
+            <h6 class="lead pb-3 ">Origin: {{flight.origin}}</h6>
+            <h6 class="lead pb-3 ">Destination: {{flight.destination}}</h6>
+            <h6 class="lead  ">Duration: {{flight.duration}} hours</h6>
+         </div>
+      </div>
+      <div width="20vh" class="m-auto my-3 card">
+         <h2 class="card-header">
+            Passengers
+         </h2>
+         <div class="card-body">
+            <p class="lead ">There are {{passlen}} passengers on this flight</p>
+            <ul class="list-group">
+               {% for passenger in passengers %}
+               <li class="list-group-item">
+                  {{passenger}}
+               </li>
+               {% empty %}
+               <li class="text-danger list-group-item">
+                 <p class="lead"> There are no passengers on Flight {{flight.id}}
+                 </p>
+               </li>
+               {% endfor %}
+            </ul>
+         </div>
+      </div>
+   </div>
+   
+   
+   <div class="container card book">
+      <h2 class="card-header">Book A Flight</h2><br>
+      <p class="lead">You can add multiple passengers onboard</p>
+      <form class="p-2 " action="{% url "book" flight.id  %}" method="post">
+         {% csrf_token %}
+         <select name="passengers" class="py-3 form-control">
+            <option class="shadow-0" selected disabled>
+               Add passengers on this flight
+            </option>
+               {% for passenger in non_passengers %}
+         <option value="{{passenger.id}}" name="passengers" >{{passenger}}
+         </option>
+           {% empty %}
+           <option>No pasengers to be registered</option>
+           {% endfor %}
+         </select>
+         <input class="my-2 ml-4  btn btn-success btn-lg" type="submit" value="submit" />
+      </form>
+   </div>
+   
+   
+   <footer class="bg-light text-center p-4 fixed-bottom">
+      <a href="{% url "index"%}" class="border-1 text-decoration-none text-dark ">
+         <<< Back to Home</a>
+   </footer>
+</body>
+{% endblock %}

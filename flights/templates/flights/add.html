@@ -1,0 +1,31 @@
+{% extends "flights/layout.html" %}
+{% block body %}
+   <div class="mr-3 row container">
+      <form width="60%" class="p-auto" action="{% url "add" %}" method="post">
+         {% csrf_token %}
+         <div class="col-4">
+            <label class="control-label" for="destination">destination</label>
+         </div>
+         <div class="col-4">
+            <input class="form-control" type="text" name="destination" id="duration" />
+         </div>
+         <div>
+            <label class="control-label" for="origin">origin</label>
+         </div>
+         <div>
+            <input class="form-control" type="text" name="origin" id="duration" />
+         </div>
+         <div>
+            <label class="control-label" for="duration">duration</label>
+         </div>
+         <div>
+            <input class="form-control" type="text" name="duration" id="duration" />
+         </div>
+         <br />
+         <div>
+            <button class="btn btn-success "type="submit">Add</button>
+         </div>
+   </div>
+   </form>
+</div>
+{% endblock %}

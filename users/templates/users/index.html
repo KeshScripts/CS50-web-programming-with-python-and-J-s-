@@ -1,0 +1,34 @@
+{% extends "users/layout.html" %}
+{% block body %}
+
+{% if message  %}
+<div class="alert alert-success">
+   {{message}}
+</div>
+{% endif %}
+<h1 style="font-family:san-serif;" class="container m-5 p-4 display-4">Welcome, {{request.user.username}}</h1>
+<div style="font-family:san-serif;" class="container">
+<li style="font-size:2rem;" class="list-unstyled">
+   Email Address: {{request.user.username}}
+</li>
+</div>
+
+   <header>
+      <nav class="navbar navbar-success bg-success py-2  text-left">
+         <h1 class="navbar-brand border-1 text-light mr-auto">Home</h1>
+         <a id="edit" title="Text Field" class="btn btn-default shadow-0 fa fa-edit fa-2x" data-toggle="collapse" data-target="#postField" aria-label="postField-toggle"></a>
+      </nav>
+      <div class="py-4 ml-5 text container">
+         <textarea type="Textarea" placeholder="write Something" class="py-4 col-9"></textarea>
+         <button class="col-3 offset-6 btn btn-success">Post</button>
+      </div>
+   </header>
+   
+   
+   
+
+
+<footer class=" text-center fixed-bottom p-3 bg-success text-light"><a href="{% url "logout" %}" class="text-white text-center">Logout</a>
+</footer>
+
+{% endblock %}
